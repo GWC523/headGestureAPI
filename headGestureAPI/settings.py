@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n$96+qgc9+4%cii&38i&7(c-8@fmh-x9#)(6e*20$_dpng=-h^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.220.244.87']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,10 +42,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -54,6 +54,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'headGestureAPI.urls'
 CORS_ORIGIN_ALLOW_ALL = True
+
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 
 TEMPLATES = [
     {
