@@ -59,7 +59,7 @@ def predict_video(
         gesture_threshold: float = 0.9
 ) -> Any:
     if model is None:
-        model = make_model()
+        model = make_model(f"../training/{Config.weights_filename}")
     landmarks = video_to_landmarks(
         video_path, max_num_frames, video_segment, end_padding,
         drop_consecutive_duplicates
@@ -77,5 +77,5 @@ def predict_video(
     return postprocess(prediction, motion_threshold, gesture_threshold)
 
 
-# if __name__ == "__main__":
+# # if __name__ == "__main__":
 #     print(predict_video(model=make_model(f"../training/{Config.weights_filename}")))
